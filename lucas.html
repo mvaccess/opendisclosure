@@ -1,0 +1,85 @@
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open Disclosure Mountain View - Lucas</title>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+      // Load Charts and the corechart package.
+      google.charts.load('current', {'packages':['corechart']});
+	  
+	  // Draw the bar chart
+      google.charts.setOnLoadCallback(drawBarChart);	  
+	  
+      // Draw the pie chart when Charts is loaded.
+      google.charts.setOnLoadCallback(drawPieChart);
+	  
+      // Callback that draws the bar chart.
+      function drawBarChart() {
+        // Create the data table bar Chart.
+		var query = new google.visualization.Query('https://docs.google.com/spreadsheets/d/1m9YfmVp1PbaMe6Cl-KhfFMGNJcEEMfgOvczgqojizPw/edit#gid=0');
+		query.setQuery('select C, sum(H) group by C order by sum(H) desc');
+		query.send(handleQueryResponse);
+		}
+		function handleQueryResponse(response) {
+			if (response.isError()) {
+			alert('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage());
+			return;
+			}
+		var data = response.getDataTable();
+        // Set options for bar chart.
+        var options = {title:'Percentage of Money Donated from Each City'};
+        // Instantiate and draw the chart for bar Chart.
+        var chart = new google.visualization.BarChart(document.getElementById('BarChart'));
+         chart.draw(data, options);
+       }
+ 
+      // Callback that draws the pie chart.
+      function drawPieChart() {
+        // Create the data table Pie Chart.
+		var query = new google.visualization.Query('https://docs.google.com/spreadsheets/d/1m9YfmVp1PbaMe6Cl-KhfFMGNJcEEMfgOvczgqojizPw/edit#gid=0');
+		query.setQuery('select C, sum(H) group by C order by sum(H) desc');
+		query.send(handleQueryResponse);
+		}
+		function handleQueryResponse(response) {
+			if (response.isError()) {
+			alert('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage());
+			return;
+			}
+		var data = response.getDataTable();
+        // Set options for pie chart.
+        var options = {title:'Percentage of Money Donated from Each City'};
+        // Instantiate and draw the chart for Pie Chart.
+        var chart = new google.visualization.PieChart(document.getElementById('PieChart'));
+         chart.draw(data, options);
+       }
+
+ </script>
+  </head>
+  <h1>Lucas Ramirez</h1>
+  <h2>Public Policy Analyst</h2>
+  <p>The candidate has agreed to the voluntary expenditure limit</p>
+  <p>website: <a href="" target="_blank">www.ramirezforcouncil.com</a> <br>
+  <a href="https://www.facebook.com/LucasRamirezMtnView/" target="_blank">facebook</a> <br>
+  <a href="https://twitter.com/LucasRamirezMV" target="_blank">twitter</a> <br>
+  <a href="http://votersedge.org/ca/en/ballot/election/area/73/contests/contest/18249/candidate/142287?election_authority_id=43" target="_blank">voter's edge profile</a> </p>
+  <hr>
+  <p>Contributions: <br>
+  Expenditures: <br>
+  Loans: <br><br>
+  Current Ballance: </p>
+  <h2>Money Coming In</h2>
+  <div id="BarChart" style="width: 900px; height: 500px;"></div><br><br>
+  <h2>Where the money came from</h2>
+  <div id="PieChart" style="width: 900px; height: 500px;"></div>
+      <script src="js/vendor/jquery.min.js"></script>
+    <script src="js/vendor/what-input.min.js"></script>
+    <script src="js/lodash.min.js"></script>
+    <script src="js/foundation.min.js"></script>
+	<script src="js/foundation.js"></script>
+	<script src="js/foundation.clearing.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
