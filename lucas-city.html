@@ -13,8 +13,8 @@
       function drawPieChart() {
 
         // Create the data table Pie Chart.
-		var query = new google.visualization.Query('https://docs.google.com/spreadsheets/d/1m9YfmVp1PbaMe6Cl-KhfFMGNJcEEMfgOvczgqojizPw/edit#gid=0');
-		query.setQuery('select C, sum(H) group by C order by sum(H) desc');
+		var query = new google.visualization.Query('https://docs.google.com/spreadsheets/d/1Cl8fIQ4GMiVjBfLnl-8tsyBPLJAAt0kNf3BlnAVL6s4/edit?usp=sharing');
+		query.setQuery('select E, sum(J) group by E order by sum(J) desc');
 		query.send(handleQueryResponse);
 		}
 
@@ -39,7 +39,7 @@
 	<link rel="stylesheet" href="css/foundation.css" />
 	<link rel="stylesheet" href="css/navbar.css" />
   </head>
-  <div id="PieChart" style="width: 900px; height: 500px;"></div>
+  <div id="PieChart" style="width: 1000px; height: 500px;"></div>
       <script src="js/vendor/jquery.min.js"></script>
     <script src="js/vendor/what-input.min.js"></script>
     <script src="js/lodash.min.js"></script>
