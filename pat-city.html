@@ -13,7 +13,7 @@
       function drawPieChart() {
 
         // Create the data table Pie Chart.
-		var query = new google.visualization.Query('https://docs.google.com/spreadsheets/d/1Cl8fIQ4GMiVjBfLnl-8tsyBPLJAAt0kNf3BlnAVL6s4/edit?usp=sharing');
+		var query = new google.visualization.Query('https://docs.google.com/spreadsheets/d/1zbXLSLFuESl-5O8gYzCXYber5cSmbxE2Mu8Jua_tQPc/edit?usp=sharing');
 		query.setQuery('select E, sum(J) group by E order by sum(J) desc');
 		query.send(handleQueryResponse);
 		}
