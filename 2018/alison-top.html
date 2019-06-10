@@ -1,0 +1,66 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="test.css" type="text/css">
+ <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+      // Load Charts and the table package.
+      google.charts.load('current', {'packages':['table']});
+
+      // Draw the table when Charts is loaded.
+      google.charts.setOnLoadCallback(drawTable);
+
+      // Callback that draws the table.
+      function drawTable() {
+
+        // Create the data table.
+		var query = new google.visualization.Query('https://docs.google.com/spreadsheets/d/1qEpU5U4KdnX9nUsIk67E5Ez5w01qvbg2Tuxuof3Qw_Q/edit?usp=sharing');
+		query.setQuery('select D, C, E, G, H, sum(J) group by C, D, E, G, H order by sum(J) desc limit 50 label sum(J) "Amount"');
+		query.send(handleQueryResponse);
+		}
+
+		function handleQueryResponse(response) {
+			if (response.isError()) {
+			alert('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage());
+			return;
+			}
+
+		var data = response.getDataTable();
+
+        // Instantiate and draw the table.
+        var table = new google.visualization.Table(document.getElementById('table_div'));
+		
+		//Create Formatter
+		var formatter = new google.visualization.NumberFormat(
+    {prefix: '$'});
+	formatter.format(data, 1); // Apply formatter to second column
+        table.draw(data);
+      }
+
+    </script>
+    <link rel="stylesheet" href="../css/app.css" />
+	<link rel="stylesheet" href="../css/foundation.css" />
+	<link rel="stylesheet" href="../css/navbar.css" />
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-101098054-3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-101098054-3');
+</script>
+
+  </head>
+  <h3>Top 50 Donors</h3>
+  <div id="table_div" style="width: 1200px; height: 1100px;"></div>
+  
+  <script src="../js/vendor/jquery.min.js"></script>
+    <script src="../js/vendor/what-input.min.js"></script>
+    <script src="../js/lodash.min.js"></script>
+    <script src="../js/foundation.min.js"></script>
+	<script src="../js/foundation.js"></script>
+	<script src="../js/foundation.clearing.js"></script>
+    <script src="../js/app.js"></script>
+  </body>
+</html>
