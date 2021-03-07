@@ -14,7 +14,7 @@
       function drawTable() {
 
         // Create the data table.
-		var query = new google.visualization.Query('https://docs.google.com/spreadsheets/d/1zbXLSLFuESl-5O8gYzCXYber5cSmbxE2Mu8Jua_tQPc/edit?usp=sharing');
+		var query = new google.visualization.Query('https://docs.google.com/spreadsheets/d/1slZgGdSmNBSSjE2AuXyKpzzdftK5djytIOIgOxCUKGw/edit?usp=sharing');
 		query.setQuery('select D, C, E, G, H, sum(J) group by C, D, E, G, H order by sum(J) desc limit 50 label sum(J) "Amount"');
 		query.send(handleQueryResponse);
 		}

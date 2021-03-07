@@ -1,6 +1,6 @@
 <html>
   <head>
-    <link rel="stylesheet" href="test.css" type="text/css">
+    <link rel="stylesheet" href="../test.css" type="text/css">
  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
       // Load Charts and the corechart package.
@@ -13,7 +13,7 @@
       function drawPieChart() {
 
         // Create the data table Pie Chart.
-		var query = new google.visualization.Query('https://docs.google.com/spreadsheets/d/1slZgGdSmNBSSjE2AuXyKpzzdftK5djytIOIgOxCUKGw/edit?usp=sharing');
+		var query = new google.visualization.Query('https://docs.google.com/spreadsheets/d/1jC4qFpkZVdm7XV0DxMizNl1yAW6S_GDJ2Ntcfcf4TXE/edit?usp=sharing');
 		query.setQuery('select B, sum(J) group by B order by sum(J) desc');
 		query.send(handleQueryResponse);
 		}

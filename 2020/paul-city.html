@@ -13,8 +13,8 @@
       function drawPieChart() {
 
         // Create the data table Pie Chart.
-		var query = new google.visualization.Query('https://docs.google.com/spreadsheets/d/1slZgGdSmNBSSjE2AuXyKpzzdftK5djytIOIgOxCUKGw/edit?usp=sharing');
-		query.setQuery('select B, sum(J) group by B order by sum(J) desc');
+		var query = new google.visualization.Query('https://docs.google.com/spreadsheets/d/1GHlcQoRAB994Jqdw2VerCWezqRUIBGDB8TE-YclfFn4/edit?usp=sharing');
+		query.setQuery('select E, sum(J) group by E order by sum(J) desc');
 		query.send(handleQueryResponse);
 		}
 
@@ -27,7 +27,7 @@
 		var data = response.getDataTable();
 
         // Set options for pie chart.
-        var options = {title:'Percentage of Money By Donor Type'};
+        var options = {title:'Percentage of Money Donated from Each City'};
 
         // Instantiate and draw the chart for Pie Chart.
         var chart = new google.visualization.PieChart(document.getElementById('PieChart'));
