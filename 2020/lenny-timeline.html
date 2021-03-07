@@ -14,7 +14,7 @@
       function drawColumnChart() {
 
         // Create the data table Column Chart.
-		var query = new google.visualization.Query('https://docs.google.com/spreadsheets/d/1vXa979wNOluBIOBm_St06vVjnzk-ozBcKp5tu0CZWZQ/edit?usp=sharing');
+		var query = new google.visualization.Query('https://docs.google.com/spreadsheets/d/12Y6nWOhS1uK76SK8QbKpgDpmE_gcKmWa-z1M6Hv2jYg/edit?usp=sharing');
 		query.setQuery('select I, sum(J) group by I label sum(J) "Amount"');
 		query.send(handleQueryResponse);
 		}

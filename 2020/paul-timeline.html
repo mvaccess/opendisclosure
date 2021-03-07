@@ -1,20 +1,21 @@
 <html>
   <head>
-    <link rel="stylesheet" href="../test.css" type="text/css">
+    <link rel="stylesheet" href="test.css" type="text/css">
  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script type="text/javascript">
+    <script type="text/javascript">
+
       // Load Charts and the corechart package.
       google.charts.load('current', {'packages':['corechart']});
 
-      // Draw the pie chart when Charts is loaded.
-      google.charts.setOnLoadCallback(drawPieChart);
+      // Draw the Column chart when Charts is loaded.
+      google.charts.setOnLoadCallback(drawColumnChart);
 
-      // Callback that draws the pie chart.
-      function drawPieChart() {
+      // Callback that draws the Column chart.
+      function drawColumnChart() {
 
-        // Create the data table Pie Chart.
-		var query = new google.visualization.Query('https://docs.google.com/spreadsheets/d/1tnd9-rp6spQ5dJE_1tr8vZUW9vOvGUK_gfVRWXLzbGA/edit?usp=sharing');
-		query.setQuery('select B, sum(J) group by B order by sum(J) desc');
+        // Create the data table Column Chart.
+		var query = new google.visualization.Query('https://docs.google.com/spreadsheets/d/1GHlcQoRAB994Jqdw2VerCWezqRUIBGDB8TE-YclfFn4/edit?usp=sharing');
+		query.setQuery('select I, sum(J) group by I label sum(J) "Amount"');
 		query.send(handleQueryResponse);
 		}
 
@@ -26,14 +27,19 @@
 
 		var data = response.getDataTable();
 
-        // Set options for pie chart.
-        var options = {title:'Percentage of Money By Donor Type'};
+        // Set options for Column chart.
+        var options = {title:'Money Donated Each Day', legend: { position: "none" }, vAxis: { format:'currency'}};
 
-        // Instantiate and draw the chart for Pie Chart.
-        var chart = new google.visualization.PieChart(document.getElementById('PieChart'));
-         chart.draw(data, options);
-       }
- 
+        // Instantiate and draw the chart for Column Chart.
+        var chart = new google.visualization.ColumnChart(document.getElementById('ColumnChart'));
+				//Create Formatter
+		var formatter = new google.visualization.NumberFormat(
+    {prefix: '$'});
+	formatter.format(data, 1); // Apply formatter to second column
+        chart.draw(data, options);
+		
+      }
+
     </script>
     <link rel="stylesheet" href="../css/app.css" />
 	<link rel="stylesheet" href="../css/foundation.css" />
@@ -49,7 +55,7 @@
 </script>
 
   </head>
-  <div id="PieChart" style="width: 1000px; height: 500px;"></div>
+  <div id="ColumnChart" style="width: 900px; height: 500px;"></div>
       <script src="../js/vendor/jquery.min.js"></script>
     <script src="../js/vendor/what-input.min.js"></script>
     <script src="../js/lodash.min.js"></script>
